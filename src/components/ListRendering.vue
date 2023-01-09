@@ -25,13 +25,14 @@
     <ul>
       <template v-for="(item) in items" >
         <li :key="item.message + 'm'">{{item.message}}</li>
-        <li :key="item.message + 'd'" class="divider" role="presentation"></li>
+        <li :key="item.message + 'qd'" class="divider" role="presentation"></li>
       </template>
     </ul>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'ListRendering',
   component: {},
@@ -49,6 +50,20 @@ export default {
       },
       number: [
           1,2,3,4,5,6
+      ],
+      todos: [
+        {
+          id: 0,
+          text: 'learn javascript'
+        },
+        {
+          id: 1,
+          text: 'learn react'
+        },
+        {
+          id: 2,
+          text: 'learn vue'
+        }
       ]
     }
   },

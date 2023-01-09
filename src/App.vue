@@ -38,7 +38,7 @@
     <div class="static" :class="classObject2">Object Syntax</div>
     <div :class="[activeClass, errorClass]">Array Syntax</div>
     <div :class="[isActive ? activeClass : '', errorClass]">ternary expression</div>
-    <ClassComponent class="baz boo" :class="{active: isActive}"/>
+    <class-component class="baz boo" :class="{active: isActive}"/>
     <div :style="{display: ['flex', 'block']}">multiple values</div>
 <!--    Conditional Rendering-->
     <div v-if="seen">v-if</div>
@@ -48,6 +48,7 @@
     <div v-else>v-else show</div>
 <!--    controlling reusable elements with key-->
     <ListRendering />
+    <todo-list />
   </div>
 
 
@@ -59,10 +60,12 @@ import _ from 'lodash'
 import axios from 'axios'
 import ClassComponent from "@/components/ClassComponent.vue";
 import ListRendering from "@/components/ListRendering.vue";
+import TodoList from "@/components/TodoList.vue";
 
 export default {
   name: 'App',
   components: {
+    TodoList,
     ListRendering,
     ClassComponent,
     TodoItem
