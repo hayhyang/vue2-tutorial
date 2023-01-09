@@ -9,6 +9,16 @@
     <ul>
       <todo-item v-for="(todo) in todos" :key="todo.id" :todo="todo"/>
     </ul>
+
+<!--    interpolations-->
+    <p>{{message}}</p>
+    <p v-once>{{message}}</p>
+    <p>{{rawHTML}}</p>
+    <p v-html="rawHTML"></p>
+    <button v-bind:disabled="isButtonDisabled">Button</button>
+    <p>{{number + 1}}</p>
+    <p>{{seen ? 'show': 'hide'}}</p>
+    <p>{{new Date()}}</p>
   </div>
 </template>
 
@@ -24,11 +34,14 @@ export default {
     return {
       message: 'Hello World',
       seen: true,
+      isButtonDisabled: false,
       todos: [
         { id: 1, text: 'Learn Javascript'},
         { id: 2, text: 'Learn Vue'},
         { id: 3, text: 'Learn React'}
-      ]
+      ],
+      rawHTML: '<p>rawHTML</p>',
+      number: 1
     }
   },
   methods: {
