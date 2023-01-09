@@ -50,6 +50,7 @@
     <ListRendering />
     <todo-list />
     <check-box />
+    <button-counter />
   </div>
 
 
@@ -63,10 +64,12 @@ import ClassComponent from "@/components/ClassComponent.vue";
 import ListRendering from "@/components/ListRendering.vue";
 import TodoList from "@/components/TodoList.vue";
 import CheckBox from "@/components/CheckBox.vue";
+import ButtonCounter from "@/components/ButtonCounter.vue";
 
 export default {
   name: 'App',
   components: {
+    ButtonCounter,
     CheckBox,
     TodoList,
     ListRendering,
