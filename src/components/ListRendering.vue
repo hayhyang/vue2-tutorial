@@ -10,6 +10,13 @@
     <ol>
       <li v-for="(value,name, i) in object" :key="i">{{i+1}}) {{name}} : {{value}}</li>
     </ol>
+
+    <ol>
+      <li v-for="number in evenNumbers" :key="number">{{number}}</li>
+    </ol>
+    <ol>
+      <li v-for="number in even(number)" :key="number">{{number}}</li>
+    </ol>
   </div>
 </template>
 
@@ -28,14 +35,26 @@ export default {
         title: 'How to do lists in Vue',
         author: 'Jane Doe',
         publishedAt: '2016-04-10'
-      }
+      },
+      number: [
+          1,2,3,4,5,6
+      ]
     }
   },
   setup () {},
   created () {},
   mounted () {},
   unmounted () {},
-  methods: {}
+  methods: {
+    even (numbers) {
+      return numbers.filter(n => n % 2 ===0)
+    }
+  },
+  computed: {
+    evenNumbers() {
+      return this.number.filter(n => n % 2 === 0)
+    }
+  }
 }
 </script>
 
