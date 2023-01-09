@@ -17,6 +17,17 @@
     <ol>
       <li v-for="number in even(number)" :key="number">{{number}}</li>
     </ol>
+
+    <ol>
+      <li v-for="n in 10" :key="n">{{n}}</li>
+    </ol>
+
+    <ul>
+      <template v-for="(item) in items" >
+        <li :key="item.message + 'm'">{{item.message}}</li>
+        <li :key="item.message + 'd'" class="divider" role="presentation"></li>
+      </template>
+    </ul>
   </div>
 </template>
 
