@@ -27,11 +27,21 @@
       <input type="text" v-model="message"/>
       <button type="submit">submit</button>
     </form>
+  <!--  computed properties and watchers-->
+    <p>{{reversedMessage}}</p>
+
+<!--    watchers-->
+    <p>Ask a yes/no question</p>
+    <input v-model="question" />
+    <p>{{answer}}</p>
   </div>
+
 </template>
 
 <script>
 import TodoItem from "@/components/Todo.vue";
+import _ from 'lodash'
+import axios from 'axios'
 
 export default {
   name: 'App',
@@ -49,7 +59,9 @@ export default {
         { id: 3, text: 'Learn React'}
       ],
       rawHTML: '<p>rawHTML</p>',
-      number: 1
+      number: 1,
+      question: '',
+      answer: 'I cannot give you an answer until you ask a question!'
     }
   },
   methods: {
@@ -58,10 +70,31 @@ export default {
     },
     onSubmit: function () {
       console.log(this.message)
+    },
+    getAnswer: function () {
+      if(this.question.indexOf('?') === -1) {
+        this.answer = 'Questions usually contain a question mark.'
+        return
+      }
+      this.answer = 'Thinking...'
+
+      axios.get('https://yesno.wtf/api').then((response) => this.answer = response.data.answer).catch(error => this.answer = 'error' + error)
+    }
+  },
+  computed: {
+      reversedMessage: function (){
+        return this.message.split('').reverse().join('')
+      }
+  },
+  watch: {
+    question: function () {
+      this.answer = 'Wating for you to stop typing'
+      this.debouncedGetAnswer()
     }
   },
   created() {
     console.log("app created")
+    this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
   },
   mounted() {
     console.log("app mounted")
