@@ -34,7 +34,14 @@
     <p>Ask a yes/no question</p>
     <input v-model="question" />
     <p>{{answer}}</p>
+  <!--  class and style bindings-->
+    <div class="static" :class="classObject2">Object Syntax</div>
+    <div :class="[activeClass, errorClass]">Array Syntax</div>
+    <div :class="[isActive ? activeClass : '', errorClass]">ternary expression</div>
+    <ClassComponent class="baz boo" :class="{active: isActive}"/>
+    <div :style="{display: ['flex', 'block']}">multiple values</div>
   </div>
+
 
 </template>
 
@@ -42,10 +49,12 @@
 import TodoItem from "@/components/Todo.vue";
 import _ from 'lodash'
 import axios from 'axios'
+import ClassComponent from "@/components/ClassComponent.vue";
 
 export default {
   name: 'App',
   components: {
+    ClassComponent,
     TodoItem
   },
   data() {
@@ -61,7 +70,14 @@ export default {
       rawHTML: '<p>rawHTML</p>',
       number: 1,
       question: '',
-      answer: 'I cannot give you an answer until you ask a question!'
+      answer: 'I cannot give you an answer until you ask a question!',
+      isActive: true,
+      hasError: false,
+      classObject: {
+        active: true, 'text-danger': false
+      },
+      activeClass: 'active',
+      errorClass: 'text-danger'
     }
   },
   methods: {
@@ -84,7 +100,13 @@ export default {
   computed: {
       reversedMessage: function (){
         return this.message.split('').reverse().join('')
-      }
+      },
+    classObject2: function () {
+        return {
+          active: this.isActive,
+          'text-danger': this.hasError
+        }
+    }
   },
   watch: {
     question: function () {
@@ -116,5 +138,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.text-danger {
+  color: red
+}
+.active {
+  color: blue
 }
 </style>
