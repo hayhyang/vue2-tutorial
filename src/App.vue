@@ -47,7 +47,7 @@
     <div v-if="Math.random() > 0.5">v-else</div>
     <div v-else>v-else show</div>
 <!--    controlling reusable elements with key-->
-
+    <ListRendering />
   </div>
 
 
@@ -58,10 +58,12 @@ import TodoItem from "@/components/Todo.vue";
 import _ from 'lodash'
 import axios from 'axios'
 import ClassComponent from "@/components/ClassComponent.vue";
+import ListRendering from "@/components/ListRendering.vue";
 
 export default {
   name: 'App',
   components: {
+    ListRendering,
     ClassComponent,
     TodoItem
   },
