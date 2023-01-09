@@ -19,6 +19,14 @@
     <p>{{number + 1}}</p>
     <p>{{seen ? 'show': 'hide'}}</p>
     <p>{{new Date()}}</p>
+
+<!--    Directives-->
+    <p v-if="seen">show</p>
+    <p v-else>hide</p>
+    <form v-on:submit.prevent="onSubmit">
+      <input type="text" v-model="message"/>
+      <button type="submit">submit</button>
+    </form>
   </div>
 </template>
 
@@ -47,6 +55,9 @@ export default {
   methods: {
     reverseMessage:function () {
       this.message = this.message.split('').reverse().join('')
+    },
+    onSubmit: function () {
+      console.log(this.message)
     }
   },
   created() {
