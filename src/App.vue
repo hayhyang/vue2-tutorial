@@ -35,6 +35,18 @@ export default {
     reverseMessage:function () {
       this.message = this.message.split('').reverse().join('')
     }
+  },
+  created() {
+    console.log("app created")
+  },
+  mounted() {
+    console.log("app mounted")
+  },
+  updated() {
+    console.log("app updated")
+  },
+  destroyed() {
+    console.log("app destroyed")
   }
 }
 </script>
