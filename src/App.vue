@@ -40,6 +40,14 @@
     <div :class="[isActive ? activeClass : '', errorClass]">ternary expression</div>
     <ClassComponent class="baz boo" :class="{active: isActive}"/>
     <div :style="{display: ['flex', 'block']}">multiple values</div>
+<!--    Conditional Rendering-->
+    <div v-if="seen">v-if</div>
+    <div v-else>v-else</div>
+
+    <div v-if="Math.random() > 0.5">v-else</div>
+    <div v-else>v-else show</div>
+<!--    controlling reusable elements with key-->
+
   </div>
 
 
@@ -59,6 +67,7 @@ export default {
   },
   data() {
     return {
+      loginType: 'username',
       message: 'Hello World',
       seen: true,
       isButtonDisabled: false,
@@ -95,6 +104,10 @@ export default {
       this.answer = 'Thinking...'
 
       axios.get('https://yesno.wtf/api').then((response) => this.answer = response.data.answer).catch(error => this.answer = 'error' + error)
+    },
+    toggleHandler: function () {
+      // if(this.loginType === 'username') this.loginType = 'email'
+      this.loginType = 'email'
     }
   },
   computed: {
