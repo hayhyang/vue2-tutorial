@@ -49,6 +49,7 @@
 <!--    controlling reusable elements with key-->
     <ListRendering />
     <todo-list />
+    <check-box />
   </div>
 
 
@@ -61,10 +62,12 @@ import axios from 'axios'
 import ClassComponent from "@/components/ClassComponent.vue";
 import ListRendering from "@/components/ListRendering.vue";
 import TodoList from "@/components/TodoList.vue";
+import CheckBox from "@/components/CheckBox.vue";
 
 export default {
   name: 'App',
   components: {
+    CheckBox,
     TodoList,
     ListRendering,
     ClassComponent,
