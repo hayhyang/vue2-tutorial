@@ -7,26 +7,27 @@
     <input v-model="message" />
     <div v-if="seen">Now you see me</div>
     <ul>
-      <li v-for="(todo, i) in todos" :key="i">{{todo.text}}</li>
+      <todo-item v-for="(todo) in todos" :key="todo.id" :todo="todo"/>
     </ul>
   </div>
 </template>
 
 <script>
+import TodoItem from "@/components/Todo.vue";
 
 export default {
   name: 'App',
   components: {
-
+    TodoItem
   },
   data() {
     return {
       message: 'Hello World',
       seen: true,
       todos: [
-        {text: 'Learn Javascript'},
-        {text: 'Learn Vue'},
-        {text: 'Learn React'}
+        { id: 1, text: 'Learn Javascript'},
+        { id: 2, text: 'Learn Vue'},
+        { id: 3, text: 'Learn React'}
       ]
     }
   },
